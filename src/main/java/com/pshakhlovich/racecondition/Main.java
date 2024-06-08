@@ -1,4 +1,4 @@
-/*
+package com.pshakhlovich.racecondition;/*
  * Copyright (c) 2019-2023. Michael Pogrebinsky - Top Developer Academy
  * https://topdeveloperacademy.com
  * All rights reserved

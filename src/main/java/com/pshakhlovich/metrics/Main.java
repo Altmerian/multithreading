@@ -1,4 +1,4 @@
-/*
+package com.pshakhlovich.metrics;/*
  * Copyright (c) 2019-2023. Michael Pogrebinsky - Top Developer Academy
  * https://topdeveloperacademy.com
  * All rights reserved
@@ -36,13 +36,15 @@ public class Main {
         public void run() {
             while (true) {
                 try {
-                    Thread.sleep(1);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                 }
 
                 double currentAverage = metrics.getAverage();
+                long metricsCount = metrics.getCount();
 
                 System.out.println("Current Average is " + currentAverage);
+                System.out.println("Current Total count is " + metricsCount);
             }
         }
     }
@@ -61,7 +63,7 @@ public class Main {
                 long start = System.currentTimeMillis();
 
                 try {
-                    Thread.sleep(random.nextInt(2));
+                    Thread.sleep(random.nextInt(20));
                 } catch (InterruptedException e) {
                 }
 
@@ -73,7 +75,7 @@ public class Main {
     }
 
     public static class Metrics {
-        private long count = 0;
+        private volatile long count = 0;
         private volatile double average = 0.0;
 
         public synchronized void addSample(long sample) {
@@ -84,6 +86,10 @@ public class Main {
 
         public double getAverage() {
             return average;
+        }
+
+        public long getCount() {
+            return count;
         }
     }
 }

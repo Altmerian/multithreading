@@ -1,4 +1,4 @@
-/*
+package com.pshakhlovich.synchronization;/*
  * Copyright (c) 2019-2023. Michael Pogrebinsky - Top Developer Academy
  * https://topdeveloperacademy.com
  * All rights reserved
@@ -58,7 +58,7 @@ public class Main {
     private static class InventoryCounter {
         private int items = 0;
 
-        Object lock = new Object();
+        final Object lock = new Object();
 
         public void increment() {
             synchronized (this.lock) {
